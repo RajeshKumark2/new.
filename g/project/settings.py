@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from django.contrib.messages import constants as messages
-
+import os
+import dj_database_url DATABASES['default'] =dj_database_url.config(default='sqlite:///db.sqlite3') # type: ignore
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-#-9-5_%7t)*&yv8@7l)dm2raa0-1j0)+9dk)2x3*&&mo$t!s+b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -120,7 +121,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-import os
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 STATICFILES_DIRS = [
   os.path.join(BASE_DIR,'static')
 ]
